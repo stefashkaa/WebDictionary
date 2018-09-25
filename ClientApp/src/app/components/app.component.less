@@ -1,0 +1,19 @@
+.body-content {
+    background-image: -webkit-linear-gradient(270deg, rgb(255, 255, 255) 0%, rgb(0, 238, 255) 51%, rgb(255, 255, 255) 100%);
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    .body-content {
+        padding-top: 50px;
+    }
+
+    .col-sm-2 {
+        height: 0% !important;
+    }
+}
+
+.container-fluid, .row, .col-sm-2, .body-content{
+    height: 100%;
+}

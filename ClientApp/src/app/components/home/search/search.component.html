@@ -1,0 +1,34 @@
+<div class="search-box">
+    <div class="search-panel">
+        <div class="search-container">
+            <input autocomplete="off" 
+                   autocorrect="off"
+                   autocapitalize="off"
+                   spellcheck="false"
+                   maxlength="20"
+                   type="search"
+                   id="search"
+                   placeholder="Search..."
+                   [(ngModel)]="inputWord"
+                   (input)="onInputWord()"
+                   (click)="onInputCLick()"
+                   (blur)="onInputBlur()" />
+            <button tabindex="-1"
+                    class="icon"
+                    (click)="onButtonClick()">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+        <div class="dropdown-words">
+            <ul *ngIf="!!inputWord && isDropdownVisible" class="dropdown-list">
+                <li *ngFor="let word of filteredWords"
+                    (mousedown)="selectElement(word.name)"
+                    class="dropdown-word">
+                    {{word.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h3 *ngIf="inputWord && (inputWord === resultWord.name) && !isDropdownVisible">{{resultWord.name}} — {{resultWord.description}}</h3>
