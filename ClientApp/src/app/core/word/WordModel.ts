@@ -1,4 +1,4 @@
-import { Word } from "./Word";
+import { Word } from "./word";
 
 export class WordModel {
     constructor(public letter: string,

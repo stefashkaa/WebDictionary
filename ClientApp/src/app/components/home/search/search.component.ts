@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Word } from '../../../core/word/Word';
-import { WordModel } from '../../../core/word/WordModel';
+import { Word } from '../../../core/word/word';
+import { WordModel } from '../../../core/word/wordModel';
 
 @Component({
     selector: 'app-search',

@@ -1,10 +1,10 @@
-<h1>Not implemented yet <i class="glyphicon glyphicon-thumbs-down"></i></h1>
+<h1><i class="glyphicon glyphicon glyphicon-arrow-down"></i> Select a letter from the list</h1>
 
 <div class="row">
     <div class="col-sm-4" *ngFor="let letterGroup of letterGroups">
         <button *ngFor="let letter of letterGroup"
             class="letter"
-            (click)="clickByLetter(letter)">
+            [routerLink]="['/list-data/', letter]">
             {{letter}}
         </button>
     </div>

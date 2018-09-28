@@ -1,0 +1,40 @@
+ol.labels-list {
+    list-style-type: none;
+    margin: auto;
+    padding: 10px;
+    counter-reset: li-counter;
+
+    > li{
+        position: relative;
+        margin-bottom: 25px;
+        padding: 20px;
+        background-color: #6a9eff9f;
+        border: #0059ff9f 2px solid;
+        border-radius: 10px;
+        font-size: 18px;
+
+        &::before {
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            width: 55px;
+            height: 35px;
+             
+            font-size: 30px;
+            line-height: 1.2;
+            font-weight: bold;
+            text-align: center;
+            color: #464646;
+            background-color: #4286f4;
+             
+            transform: rotate(-20deg);
+            -ms-transform: rotate(-20deg);
+            -webkit-transform: rotate(-20deg);
+            z-index: 1;
+            overflow: hidden;
+             
+            content: counter(li-counter);
+            counter-increment: li-counter;
+        }
+    }
+}

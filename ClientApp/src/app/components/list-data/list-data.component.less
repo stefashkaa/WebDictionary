@@ -26,12 +26,26 @@ button.letter {
     &:hover {
         background: #232833;
     }
-}
 
-@media (max-width: 767px) {
-    button.letter {
-        display: inline-block;
+    @media (max-width: 767px) {
         height: 40px;
         width: 40px;
+    }
+
+    @media (min-width: 406px) and (max-width: 767px) {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 405px) {
+    .col-sm-4 {
+        display: inline-block;
+    }
+}
+
+@media (min-width: 406px) and (max-width: 767px) {
+    .col-sm-4 {
+        display: table;
+        margin: auto;
     }
 }

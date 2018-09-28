@@ -7,23 +7,22 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { ListDataComponent } from './list-data/list-data.component';
+import { ListDataModule } from './list-data/list-data.module';
 import { HomeModule } from './home/home.module';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
-        ListDataComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
         HomeModule,
+        ListDataModule,
         FormsModule,
         RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'list-data', component: ListDataComponent }
+            { path: '', component: HomeComponent, pathMatch: 'full' }
         ])
     ],
     providers: [],

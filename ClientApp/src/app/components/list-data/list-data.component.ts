@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { Util } from '../../util/util';
 
 @Component({
     selector: 'app-list-data',
@@ -7,14 +7,8 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./list-data.component.less']
 })
 export class ListDataComponent {
-    public readonly letterGroups: string[][] = [["А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И"],
-                                                ["К", "Л", "М", "Н", "О", "П", "Р", "С", "Т"], 
-                                                ["У", "Ф", "Х", "Ц", "Ч", "Ш", "Э", "Ю", "Я"]]; 
+    public readonly letterGroups: string[][] = Util.letterGroups; 
 
-    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    }
-
-    public clickByLetter(letter: string) {
-        //
+    constructor() {
     }
 }
