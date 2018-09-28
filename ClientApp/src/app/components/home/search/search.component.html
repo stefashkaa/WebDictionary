@@ -12,6 +12,7 @@
                    [(ngModel)]="inputWord"
                    (input)="onInputWord()"
                    (click)="onInputCLick()"
+                   (keyup.enter)="onButtonClick()"
                    (blur)="onInputBlur()" />
             <button tabindex="-1"
                     class="icon"
@@ -20,7 +21,7 @@
             </button>
         </div>
         <div class="dropdown-words">
-            <ul *ngIf="!!inputWord && isDropdownVisible" class="dropdown-list">
+            <ul *ngIf="!!inputWord && isDropdownDisplayed" class="dropdown-list">
                 <li *ngFor="let word of filteredWords"
                     (mousedown)="selectElement(word.name)"
                     class="dropdown-word">
@@ -31,4 +32,4 @@
     </div>
 </div>
 
-<h3 *ngIf="inputWord && (inputWord === resultWord.name) && !isDropdownVisible">{{resultWord.name}} — {{resultWord.description}}</h3>
+<h3 *ngIf="isTermDisplayed">{{resultWord.name}} — {{resultWord.description}}</h3>

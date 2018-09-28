@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Word } from '../../../core/word/word';
@@ -12,7 +13,7 @@ export class SearchComponent {
     public filteredWords: Word[] = [];
     public inputWord: string = null;
     public resultWord: Word = null;
-    public isDropdownVisible: boolean = false;
+    public isDropdownDisplayed: boolean = false;
 
     constructor(private readonly http: HttpClient,
         @Inject('BASE_URL') private readonly baseUrl: string) {
@@ -21,13 +22,13 @@ export class SearchComponent {
 
     public selectElement(word: string) {
         this.inputWord = word;
-        this.isDropdownVisible = false;
+        this.isDropdownDisplayed = false;
 
         this.filterWords(word, true);
     }
 
     public onInputCLick() {
-        this.isDropdownVisible = !this.isDropdownVisible;
+        this.isDropdownDisplayed = !this.isDropdownDisplayed;
 
         if (!this.inputWord) {
             return;
@@ -40,13 +41,13 @@ export class SearchComponent {
         if (!this.inputWord) {
             return;
         }
-        this.isDropdownVisible = true;
+        this.isDropdownDisplayed = true;
 
         this.filterWords(this.inputWord);
     }
 
     public onInputBlur() {
-        this.isDropdownVisible = false;
+        this.isDropdownDisplayed = false;
     }
 
     public onButtonClick() {
@@ -54,6 +55,12 @@ export class SearchComponent {
             return;
         }
         this.filterWords(this.inputWord, true);
+    }
+
+    public get isTermDisplayed() {
+        return this.resultWord && this.inputWord 
+            && (_.toLower(this.inputWord) === _.toLower(this.resultWord.name)) 
+            && !this.isDropdownDisplayed;
     }
 
     private filterWords(inputWord: string, setDescription?: boolean) {
@@ -66,6 +73,9 @@ export class SearchComponent {
         () => {
             this.filteredWords = result.words;
             if (setDescription) {
+                if (result.words[0]) {
+                    this.isDropdownDisplayed = false;
+                }
                 this.resultWord = result.words[0];
             }
         });
