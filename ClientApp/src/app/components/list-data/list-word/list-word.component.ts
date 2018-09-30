@@ -42,7 +42,7 @@ export class ListWordComponent {
         },
         error => console.error(error),
         () => {
-            this.words = _.orderBy(result.words, [word => word.name], ['asc']);
+            this.words = _.orderBy(result.words, [word => _.toLower(word.name)], ['asc']);
         });
     }
 }

@@ -71,7 +71,7 @@ export class SearchComponent {
         },
         error => console.error(error),
         () => {
-            this.filteredWords = result.words;
+            this.filteredWords = _.orderBy(result.words, [word => _.toLower(word.name)], ['asc']);
             if (setDescription) {
                 if (result.words[0]) {
                     this.isDropdownDisplayed = false;
