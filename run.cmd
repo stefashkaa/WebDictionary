@@ -1,1 +1,0 @@
-git reset --hard && git pull && dotnet publish -c Release -o c://inetpub/wwwroot/webdictionary
