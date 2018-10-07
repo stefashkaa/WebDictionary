@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables.less';
+
 /* Keep the nav menu independent of scrolling and on top of other items */
 .main-nav {
     position: fixed;
@@ -5,13 +7,17 @@
     left: 0;
     right: 0;
     z-index: 2;
+
+    .navbar {
+        background-color: @dark;
+    }
 }
 
 @media (min-height: 300px) {
     .about-text {
         display: grid;
         text-align: center;
-        color: #777676;
+        color: @gray-light;
         bottom: 0;
         right: 0;
         left: 0;
@@ -36,7 +42,7 @@
             }
 
             .navbar-collapse {
-                border-top: 1px solid #444;
+                border-top: 1px solid @gray;
                 padding: 0px;
 
                 ul {
@@ -57,7 +63,7 @@
                     .link-active a,
                     .link-active a:hover,
                     .link-active a:focus {
-                        background-color: #4189C7;
+                        background-color: @blue;
                         color: white;
                     }
                     .glyphicon {
