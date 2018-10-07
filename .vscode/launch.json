@@ -9,25 +9,13 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/WebDictionary.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
-                "enabled": true,
-                "args": "${auto-detect-url}",
-                "windows": {
-                    "command": "cmd.exe",
-                    "args": "/C start ${auto-detect-url}"
-                },
-                "osx": {
-                    "command": "open"
-                },
-                "linux": {
-                    "command": "xdg-open"
-                }
+                "enabled": false
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -37,10 +25,23 @@
             }
         },
         {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome",
+            "url": "https://localhost:5001",
+            "webRoot": "${workspaceFolder}/ClientApp"
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
         }
-    ,]
+    ],
+    "compounds": [
+        {
+            "name": "Full stack",
+            "configurations": [".NET Core Launch (web)", "Chrome"]
+        }
+    ]
 }
