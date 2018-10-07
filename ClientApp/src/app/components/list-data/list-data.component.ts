@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Util } from '../../util/util';
 
 @Component({
@@ -7,7 +8,7 @@ import { Util } from '../../util/util';
     styleUrls: ['./list-data.component.less']
 })
 export class ListDataComponent {
-    public readonly letterGroups: string[][] = Util.letterGroups; 
+    public readonly letterGroups: string[][] = Util.letterGroups;
 
     constructor() {
     }

@@ -1,8 +1,10 @@
 import * as _ from 'lodash';
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Word } from '../../../core/word/word';
 import { WordModel } from '../../../core/word/wordModel';
+import { trace } from '../../../diagnostic/trace';
 
 @Component({
     selector: 'app-search',
@@ -10,14 +12,17 @@ import { WordModel } from '../../../core/word/wordModel';
     styleUrls: ['./search.component.less']
 })
 export class SearchComponent {
+
+    private readonly logger = trace.get('SearchComponent');
+
     public filteredWords: Word[] = [];
     public inputWord: string = null;
     public resultWord: Word = null;
-    public isDropdownDisplayed: boolean = false;
+    public isDropdownDisplayed = false;
 
     constructor(private readonly http: HttpClient,
         @Inject('BASE_URL') private readonly baseUrl: string) {
-        this.resultWord = new Word("Term...", "Description...");
+        this.resultWord = new Word('Term...', 'Description...');
     }
 
     public selectElement(word: string) {
@@ -27,7 +32,7 @@ export class SearchComponent {
         this.filterWords(word, true);
     }
 
-    public onInputCLick() {
+    public inputCLick() {
         this.isDropdownDisplayed = !this.isDropdownDisplayed;
 
         if (!this.inputWord) {
@@ -46,11 +51,11 @@ export class SearchComponent {
         this.filterWords(this.inputWord);
     }
 
-    public onInputBlur() {
+    public blur() {
         this.isDropdownDisplayed = false;
     }
 
-    public onButtonClick() {
+    public search() {
         if (!this.inputWord) {
             return;
         }
@@ -58,8 +63,8 @@ export class SearchComponent {
     }
 
     public get isTermDisplayed() {
-        return this.resultWord && this.inputWord 
-            && (_.toLower(this.inputWord) === _.toLower(this.resultWord.name)) 
+        return this.resultWord && this.inputWord
+            && (_.toLower(this.inputWord) === _.toLower(this.resultWord.name))
             && !this.isDropdownDisplayed;
     }
 
@@ -69,14 +74,19 @@ export class SearchComponent {
             new WordModel(inputWord, null)).subscribe(res => {
             result = res;
         },
-        error => console.error(error),
+        error => this.logger.error(error),
         () => {
             this.filteredWords = _.orderBy(result.words, [word => _.toLower(word.name)], ['asc']);
             if (setDescription) {
                 if (result.words[0]) {
                     this.isDropdownDisplayed = false;
                 }
-                this.resultWord = result.words[0];
+                if (this.resultWord.name !== result.words[0].name) {
+                    this.resultWord = result.words[0];
+                    if (this.isTermDisplayed) {
+                        this.logger.info(this.resultWord);
+                    }
+                }
             }
         });
     }

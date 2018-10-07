@@ -11,12 +11,12 @@
                    placeholder="Search..."
                    [(ngModel)]="inputWord"
                    (input)="onInputWord()"
-                   (click)="onInputCLick()"
-                   (keyup.enter)="onButtonClick()"
-                   (blur)="onInputBlur()" />
+                   (click)="inputCLick()"
+                   (keyup.enter)="search()"
+                   (blur)="blur()" />
             <button tabindex="-1"
                     class="icon"
-                    (click)="onButtonClick()">
+                    (click)="search()">
                 <i class="glyphicon glyphicon-search"></i>
             </button>
         </div>
