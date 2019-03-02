@@ -29,6 +29,9 @@ Obj/
 # Visual Studio 2015 cache/options directory
 .vs/
 
+#SonarQube directory
+.scannerwork/
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
