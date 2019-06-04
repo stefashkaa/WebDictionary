@@ -1,5 +1,7 @@
 export class Word {
     constructor(public name: string,
-        public description: string) {
+        public grammar: string,
+        public description: string,
+        public example: string) {
     }
 }
