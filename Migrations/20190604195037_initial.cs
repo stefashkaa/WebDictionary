@@ -30,7 +30,9 @@ namespace WebDictionary.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Grammar = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Example = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

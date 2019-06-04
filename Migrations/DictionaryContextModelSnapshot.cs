@@ -16,7 +16,7 @@ namespace WebDictionary.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("WebDictionary.Entities.Error", b =>
@@ -41,6 +41,10 @@ namespace WebDictionary.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("Example");
+
+                    b.Property<string>("Grammar");
 
                     b.Property<string>("Name");
 
