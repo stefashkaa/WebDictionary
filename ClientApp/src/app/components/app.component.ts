@@ -11,7 +11,6 @@ export class AppComponent {
     public title = 'app';
 
     constructor() {
-        browser.logBrowserInformation();
     }
 
     public get cssClassList() {
@@ -19,9 +18,6 @@ export class AppComponent {
 
         if (browser.isMobile()) {
             res.push('app-mobile');
-        }
-        if (browser.isIE()) {
-            res.push('app-ie');
         }
 
         return res;

@@ -22,7 +22,7 @@ export class SearchComponent {
 
     constructor(private readonly http: HttpClient,
         @Inject('BASE_URL') private readonly baseUrl: string) {
-        this.resultWord = new Word('Term...', 'Description...');
+        this.resultWord = new Word('Term...', '', 'Description...', '');
     }
 
     public selectElement(word: string) {
