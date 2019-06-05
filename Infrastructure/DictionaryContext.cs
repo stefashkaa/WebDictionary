@@ -16,6 +16,8 @@ namespace WebDictionary.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Word>().HasAlternateKey(word => word.Name);
+
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
                 entity.Relational().TableName = entity.DisplayName();
