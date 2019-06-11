@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { trigger, state, style, animate, transition, group } from '@angular/animations';
 
 import { Word } from '../../../core/word/word';
-import { WordModel } from '../../../core/word/wordModel';
+import { WordModel } from '../../../core/word/word.model';
 import { trace } from '../../../diagnostic/trace';
 
 @Component({

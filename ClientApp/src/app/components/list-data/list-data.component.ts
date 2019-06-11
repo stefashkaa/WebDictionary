@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Word } from '../../core/word/word';
 import { trace } from '../../diagnostic/trace';
-import { WordModel } from '../../core/word/wordModel';
+import { WordModel } from '../../core/word/word.model';
 
 
 @Component({

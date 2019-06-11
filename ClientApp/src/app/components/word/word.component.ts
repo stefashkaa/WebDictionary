@@ -7,7 +7,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 
 import { Word } from '../../core/word/word';
 import { trace } from '../../diagnostic/trace';
-import { WordModel } from '../../core/word/wordModel';
+import { WordModel } from '../../core/word/word.model';
 
 @Component({
     selector: 'app-word',
