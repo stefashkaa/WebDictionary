@@ -1,0 +1,11 @@
+<h1><i class="glyphicon glyphicon-text-color"></i> Выберите букву из списка</h1>
+
+<div class="row">
+    <div class="col-sm-4" *ngFor="let letterGroup of letterGroups">
+        <button *ngFor="let letter of letterGroup"
+            class="letter"
+            [routerLink]="['/abc-index/', letter]">
+            {{letter}}
+        </button>
+    </div>
+</div>

@@ -12,8 +12,8 @@ namespace WebDictionary.Controllers
     [Route("api/[controller]")]
     public class WordsController : Controller
     {
-        private static Dictionary<char, char> doubleLetters = new Dictionary<char, char>(){{'ё', 'е'}, {'е', 'ё'}, 
-                                                                                           {'и', 'й'}, {'й', 'и'}, 
+        private static Dictionary<char, char> doubleLetters = new Dictionary<char, char>(){{'ё', 'е'}, {'е', 'ё'},
+                                                                                           {'и', 'й'}, {'й', 'и'},
                                                                                            {'ш', 'щ'}, {'щ', 'ш'}};
 
         private readonly IWordsRepository wordsRepository;
@@ -39,8 +39,9 @@ namespace WebDictionary.Controllers
                     {
                         break;
                     }
-                    
-                    if (word.Name.ToLower().Contains(letter))
+
+                    if (!model.exactlyWord && word.Name.ToLower().Contains(letter)
+                        || model.exactlyWord && word.Name.ToLower() == letter)
                     {
                         words.Add(word);
                     }
@@ -52,6 +53,14 @@ namespace WebDictionary.Controllers
                 }
             }
             model.Words = words;
+            return model;
+        }
+
+        [HttpGet("[action]")]
+        public WordModel GetAllWords()
+        {
+            var model = new WordModel();
+            model.Words = wordsRepository.GetAll();
             return model;
         }
 
@@ -87,6 +96,14 @@ namespace WebDictionary.Controllers
             }
             model.Words = words;
             return model;
+        }
+
+        [HttpGet("[action]")]
+        public bool InitEFModel()
+        {
+            // It is just for initialization of the entity framework
+            var word = this.wordsRepository.GetSingle(1);
+            return true;
         }
     }
 }

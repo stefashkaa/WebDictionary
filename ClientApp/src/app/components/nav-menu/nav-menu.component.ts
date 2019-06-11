@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class NavMenuComponent {
     public isExpanded = false;
 
-    public collapse() {
+    public collapse(): void {
         this.isExpanded = false;
     }
 
-    public toggle() {
+    public toggle(): void {
         this.isExpanded = !this.isExpanded;
     }
 }

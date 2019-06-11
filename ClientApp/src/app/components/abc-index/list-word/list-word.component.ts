@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 import { Word } from '../../../core/word/word';
 import { WordModel } from '../../../core/word/wordModel';
@@ -26,7 +26,7 @@ export class ListWordComponent implements OnInit {
         @Inject('BASE_URL') private readonly baseUrl: string) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.activeRoute.params.subscribe(routeParams => {
             this.letter = routeParams.letter;
             if (!Util.validLetter(this.letter)) {
@@ -38,7 +38,7 @@ export class ListWordComponent implements OnInit {
         });
     }
 
-    private listWords() {
+    private listWords(): void {
         let result: WordModel = null;
         this.http.post<WordModel>(this.baseUrl + 'api/Words/ListByLetter',
             new WordModel(this.letter, null)).subscribe(res => {

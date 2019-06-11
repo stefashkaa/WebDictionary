@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { trigger, state, style, animate, transition, group } from '@angular/animations';
 
 import { Word } from '../../../core/word/word';
 import { WordModel } from '../../../core/word/wordModel';
@@ -9,7 +10,19 @@ import { trace } from '../../../diagnostic/trace';
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.less']
+    styleUrls: ['./search.component.less'],
+    animations: [
+        trigger('showWordState', [
+            state('show', style({
+                opacity: 1
+            })),
+            state('hide', style({
+                opacity: 0
+            })),
+            // transition('show => hide', animate('600ms ease-out')),
+            transition('hide => show', animate('1000ms ease-in'))
+        ])
+    ]
 })
 export class SearchComponent {
 
@@ -25,14 +38,18 @@ export class SearchComponent {
         this.resultWord = new Word('Term...', '', 'Description...', '');
     }
 
-    public selectElement(word: string) {
+    public get stateWord(): string {
+        return this.isTermDisplayed ? 'show' : 'hide';
+    }
+
+    public selectElement(word: string): void {
         this.inputWord = word;
         this.isDropdownDisplayed = false;
 
         this.filterWords(word, true);
     }
 
-    public inputCLick() {
+    public inputCLick(): void {
         this.isDropdownDisplayed = !this.isDropdownDisplayed;
 
         if (!this.inputWord) {
@@ -42,7 +59,7 @@ export class SearchComponent {
         this.filterWords(this.inputWord);
     }
 
-    public onInputWord() {
+    public onInputWord(): void {
         if (!this.inputWord) {
             return;
         }
@@ -51,24 +68,24 @@ export class SearchComponent {
         this.filterWords(this.inputWord);
     }
 
-    public blur() {
+    public blur(): void {
         this.isDropdownDisplayed = false;
     }
 
-    public search() {
+    public search(): void {
         if (!this.inputWord) {
             return;
         }
         this.filterWords(this.inputWord, true);
     }
 
-    public get isTermDisplayed() {
+    public get isTermDisplayed(): boolean {
         return this.resultWord && this.inputWord
             && (_.toLower(this.inputWord) === _.toLower(this.resultWord.name))
             && !this.isDropdownDisplayed;
     }
 
-    private filterWords(inputWord: string, setDescription?: boolean) {
+    private filterWords(inputWord: string, setDescription?: boolean): void {
         let result: WordModel = null;
         this.http.post<WordModel>(this.baseUrl + 'api/Words/GetWords',
             new WordModel(inputWord, null)).subscribe(res => {
@@ -90,6 +107,4 @@ export class SearchComponent {
             }
         });
     }
-
-
 }

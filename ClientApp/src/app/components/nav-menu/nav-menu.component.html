@@ -19,30 +19,35 @@
             <ul class='nav navbar-nav'>
                 <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
                     <a [routerLink]='["/"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-search'></span> Find
+                        <span class='glyphicon glyphicon-search'></span> Поиск
+                    </a>
+                </li>
+                <li [routerLinkActive]='["link-active"]'>
+                    <a [routerLink]='["/abc-index"]' (click)='collapse()'>
+                        <span class='glyphicon glyphicon-text-color'></span> Алфавитный указатель
                     </a>
                 </li>
                 <li [routerLinkActive]='["link-active"]'>
                     <a [routerLink]='["/list-data"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-th-list'></span> List
+                        <span class='glyphicon glyphicon-th-list'></span> Список
                     </a>
                 </li>
                 <li [routerLinkActive]='["link-active"]'>
                     <a href="https://github.com/stefashkaa/WebDictionary" target="_blank" (click)='collapse()'>
-                        <span class='glyphicon glyphicon-new-window'></span> About
+                        <span class='glyphicon glyphicon-new-window'></span> О проекте
                     </a>
                 </li>
             </ul>
             <div class="about-text" *ngIf="!isExpanded">
                 <span>The project developed by</span>
                 <span>
-                    <a href="http://vk.com/stefanpopov" target="_blank">Stefan Popov</a>
-                    And
                     <a href="https://vk.com/id422978927" target="_blank">Ksenia Salabaeva</a>
+                    And
+                    <a href="http://vk.com/stefanpopov" target="_blank">Stefan Popov</a>
                 </span>
                 <span>
                     Copyright © 
-                    <a href="https://university.innopolis.ru/" target="_blank">Innopolis University</a>
+                    <a href="https://kpfu.ru/" target="_blank">Kazan Federal University</a>
                 </span>
                 <span>2018</span>
             </div>

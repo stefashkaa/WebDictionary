@@ -1,11 +1,12 @@
-<h1><i class="glyphicon glyphicon glyphicon-arrow-down"></i> Select a letter from the list</h1>
+<h1><i class="glyphicon glyphicon-th-list"></i> Полный список слов</h1>
+<span>(Выберите слово из списка для получения его значения)</span>
 
 <div class="row">
-    <div class="col-sm-4" *ngFor="let letterGroup of letterGroups">
-        <button *ngFor="let letter of letterGroup"
-            class="letter"
-            [routerLink]="['/list-data/', letter]">
-            {{letter}}
-        </button>
-    </div>
+    <ul class="list-words">
+        <li *ngFor="let word of words">
+            <a [routerLink]="['/word/', word.name]">
+                {{word.name}}
+            </a>
+        </li>
+    </ul>
 </div>

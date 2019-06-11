@@ -1,0 +1,7 @@
+<h1><i class="glyphicon glyphicon-education"></i>Слова, начинающиеся с "{{letter}}"</h1>
+
+<ol class="labels-list">
+    <li *ngFor="let word of words">
+        <b>{{word.name}}</b> -{{word.grammar}} — {{word.description}} <br /> <i>{{word.example}}</i>
+    </li>
+</ol>

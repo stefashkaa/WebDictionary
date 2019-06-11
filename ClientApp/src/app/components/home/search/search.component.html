@@ -1,14 +1,14 @@
 <div class="search-box">
     <div class="search-panel">
         <div class="search-container">
-            <input autocomplete="off" 
+            <input autocomplete="off"
                    autocorrect="off"
                    autocapitalize="off"
                    spellcheck="false"
                    maxlength="20"
                    type="search"
                    id="search"
-                   placeholder="Search..."
+                   placeholder="Поиск..."
                    [(ngModel)]="inputWord"
                    (input)="onInputWord()"
                    (click)="inputCLick()"
@@ -32,4 +32,8 @@
     </div>
 </div>
 
-<h3 *ngIf="isTermDisplayed"><b>{{resultWord.name}}</b> — {{resultWord.description}}</h3>
+<h3 [@showWordState]="stateWord">
+    <ng-container *ngIf="isTermDisplayed">
+        <b>{{resultWord.name}}</b> -{{resultWord.grammar}} — {{resultWord.description}} <br /> <i>{{resultWord.example}}</i>
+    </ng-container>
+</h3>
