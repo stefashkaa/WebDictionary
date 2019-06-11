@@ -4,8 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 
-import { Word } from '../../../core/word/word';
-import { WordModel } from '../../../core/word/word.model';
+import { WordModel, Word } from '../../../core/word/word.model';
 import { Util } from '../../../util/util';
 import { trace } from '../../../diagnostic/trace';
 

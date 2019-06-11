@@ -5,9 +5,8 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, style, animate, transition } from '@angular/animations';
 
-import { Word } from '../../core/word/word';
 import { trace } from '../../diagnostic/trace';
-import { WordModel } from '../../core/word/word.model';
+import { WordModel, Word } from '../../core/word/word.model';
 
 @Component({
     selector: 'app-word',
